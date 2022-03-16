@@ -1,16 +1,368 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Fredoka", sans-serif;
+
+  box-sizing: border-box;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-image: linear-gradient(-270deg, #29957b, #0fa657);
+  background-size: 200%;
+  background-position: left;
+  animation: bgFlow 25s ease-in-out infinite alternate;
 }
-
+#__next {
+  height: 100vh;
+}
+@keyframes bgFlow {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
+h1 {
+  letter-spacing: 3px;
+}
 a {
   color: inherit;
   text-decoration: none;
 }
+ul {
+  list-style: none;
+}
 
-* {
-  box-sizing: border-box;
+.center-screen {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+.p-2 {
+  padding: 2rem;
+}
+.p-0 {
+  padding: 0 !important;
+}
+.card {
+  padding: 1rem;
+  border-radius: 5px;
+  background-color: white;
+  height: fit-content;
+}
+.text-center {
+  text-align: center;
+}
+.d-grid {
+  display: grid;
+}
+.h-max {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.border {
+  border: 2px solid red;
+}
+.gap {
+  gap: 1rem;
+}
+.d-flex {
+  display: flex;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.flex-column {
+  flex-direction: column;
+}
+.flex-justify-between {
+  justify-content: space-between;
+}
+.flex-align-end {
+  align-items: flex-end;
+}
+.flex-align-center {
+  align-items: center;
+}
+.flex-justify-end {
+  justify-content: flex-end;
+}
+.flex-center-between {
+  align-items: center;
+  justify-content: space-between;
+}
+.grid-column {
+  grid-auto-flow: column;
+}
+.shadow-sm {
+  box-shadow: 0 0 6px 5px #2a2a2a2a;
+}
+.w-fit-content {
+  width: fit-content;
+}
+.w-100 {
+  width: 100%;
+}
+.h-fit-content {
+  height: fit-content;
+}
+.form-control {
+  padding: 0.25rem;
+  border: 1px solid #29957b;
+}
+.text-normal {
+  font-size: 1.25rem;
+}
+.btn {
+  padding: 0.5rem;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.btn-primary {
+  color: white;
+  background-image: linear-gradient(90deg, #29957b, #0fa657);
+  transition: all 100ms ease-in-out;
+}
+.btn:hover,
+.btn:focus {
+  opacity: 0.8;
+  outline: 0;
+}
+.form-control:focus {
+  outline: 0;
+  box-shadow: 0 0 16px 0 #2a2a2a6e;
+}
+.badge {
+  font-size: 0.9rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 100vw;
+}
+.toggle-switch {
+  width: 40px;
+  display: block;
+  height: 25px;
+  border-radius: 100vw;
+  position: relative;
+  --color: #9bb1aa;
+  border: 2px solid var(--color);
+  background-color: var(--color);
+}
+.toggle-switch::after {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  content: "";
+  background-color: #ffffff;
+  border-radius: 50%;
+  top: 0;
+  transform: translateX(-2px);
+  transition: all 150ms ease-in-out;
+}
+.toggle-switch.toggled {
+  --color: #0fa657;
+}
+.toggle-switch.toggled::after {
+  transform: translateX(calc(-100% + 2px));
+}
+/* Colors */
+.yellow {
+  background-color: rgb(243, 230, 45);
+}
+.purple {
+  background-color: rgb(255, 137, 235);
+}
+.red {
+  background-color: rgba(255, 141, 141, 0.849);
+}
+/* Colors */
+/* Custom */
+
+/* Login Page */
+.login-form-div,
+.chat-form-div {
+  grid-template-areas: "header header" "input search";
+}
+.login-form-div > button,
+.chat-form-div > button {
+  grid-area: search;
+}
+.user-list-item {
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Rooms */
+.info {
+  align-items: center;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Invitations */
+.invitation-btn {
+  position: relative;
+}
+.invitation-btn.new-invitation::before {
+  content: "";
+  --dim: 15px;
+  width: var(--dim);
+  height: var(--dim);
+  right: 0;
+  top: calc(-35% + calc(var(--dim) / 2));
+  right: calc(-1 * calc(var(--dim) / 2));
+  border-radius: 50%;
+  background-color: rgb(253, 70, 38);
+  color: white;
+  position: absolute;
+  z-index: 9999;
+  animation: jump 1s infinite;
+}
+@keyframes jump {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(1.1, 0.9) translateY(0);
+  }
+  30% {
+    transform: scale(0.9, 1.1) translateY(-10px);
+  }
+  50% {
+    transform: scale(1.05, 0.95) translateY(0);
+  }
+  57% {
+    transform: scale(1, 1) translateY(-1px);
+  }
+  64% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
+.invitations {
+  position: relative;
+}
+.invitation-list {
+  transform: scale(0, 1);
+  min-width: max-content;
+  max-width: 500px;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.5rem);
+  box-shadow: 0 0 6px 0 #2a2a2a;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  max-height: 350px;
+  overflow-y: auto;
+  gap: 0.5rem;
+  z-index: 9999999;
+  opacity: 0;
+  transform-origin: right;
+  transition: opacity 150ms ease-in-out;
+}
+.invitation-item {
+  padding: 0.5rem;
+  background-color: #bbffdd;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.invitation-list.show {
+  opacity: 1;
+  transform: scale(1, 1);
+}
+
+/* Chat */
+.chat {
+  height: 100%;
+  grid-template-rows: auto 1fr;
+  gap: 0.5rem;
+}
+.chat-wrapper {
+  grid-template-rows: auto 1fr auto;
+}
+.chat-form-div {
+  grid-template-columns: 1fr auto;
+  column-gap: 1rem;
+  row-gap: 0.25rem;
+}
+
+.chat-form-div > .form-control {
+  width: 100%;
+}
+.chat-form-div > button {
+  width: max-content;
+}
+
+.chat-wrapper > header {
+  background-color: rgb(213, 255, 211);
+}
+.messages {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.message-list {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.message-item {
+  width: 40%;
+  padding: 1rem;
+  border-radius: 5px;
+  background-color: #ffe6bd;
+}
+
+.msg-self > li {
+  background-color: #bdffdd;
+}
+.header {
+}
+@media screen and (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .flex-column-sm {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .rooms-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .message-item {
+    width: 90%;
+  }
+  .rooms-header > div {
+    gap: 0.5rem;
+  }
+  .info > .badge {
+    display: none;
+  }
+  .user-list-item {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .badge-list {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
