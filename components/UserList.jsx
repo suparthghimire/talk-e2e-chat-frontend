@@ -12,7 +12,6 @@ export default function UserList({ users }) {
   return (
     <>
       {users.map((user, idx) => {
-        console.log(user);
         return (
           <li
             className="card user-list-item text-normal w-fit-content d-flex flex-center-between"

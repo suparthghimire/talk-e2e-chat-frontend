@@ -5,6 +5,7 @@ import { useSocket } from "../context/SocketContext";
 import UserList from "../components/UserList";
 import Unauthorized from "../components/Unauthorized";
 import { toast } from "react-toastify";
+import InvitationList from "../components/InvitationList";
 export default function Home() {
   const [users, setUsers] = useState([]);
   const [invitations, setInvitations] = useState([]);
@@ -38,10 +39,28 @@ export default function Home() {
     });
     socket.on("new_invitation", (newInvitation) => {
       setInvitations((oldInvitations) => [newInvitation, ...oldInvitations]);
+      toast.info(
+        `New Chat Invitation from ${
+          newInvitation.otherUser.name.length < 10
+            ? newInvitation.otherUser.name
+            : newInvitation.otherUser.name.slice(0, 10) + "..."
+        }`,
+        { autoClose: 1000 }
+      );
       setNewInvitationIconShow(true);
     });
     socket.on("invitation_exists", () => {
       toast.error("Invitation for Chat Already Exists!", { autoClose: 1000 });
+    });
+    socket.on("invitation_removed", (roomId) => {
+      const newInvitations = invitations.filter((inv) => inv.roomId !== roomId);
+      console.log(newInvitations);
+      setInvitations(newInvitations);
+    });
+    socket.on("invitation_rejected", (rejectingUser) => {
+      toast.error(`Opps. ${rejectingUser.name} Rejected Your Chat Request!`, {
+        autoClose: 1000,
+      });
     });
   }, []);
 
@@ -90,26 +109,7 @@ export default function Home() {
                 But You Can Invite Others! 😄
               </p>
             ) : (
-              invitations.map((invitation, idx) => {
-                return (
-                  <li
-                    key={`invitation-room-id-${idx}`}
-                    className="invitation-item"
-                  >
-                    <p>
-                      {invitation.otherUser.name} Has Invited You For a Chat
-                    </p>
-                    <div className="d-flex gap">
-                      <button className="btn btn-primary">
-                        Accept Invitation
-                      </button>
-                      <button className="btn btn-primary">
-                        Reject Invitation
-                      </button>
-                    </div>
-                  </li>
-                );
-              })
+              <InvitationList invitations={invitations} />
             )}
           </ul>
         </div>
