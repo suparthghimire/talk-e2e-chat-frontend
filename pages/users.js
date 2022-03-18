@@ -24,7 +24,6 @@ export default function Home() {
     if (!socket) return;
     socket.emit("get_all_users");
     socket.on("all_users", (allUsers) => {
-      console.log("All Users", allUsers);
       allUsers =
         allUsers.length > 0
           ? allUsers.filter((usr) => usr.id !== user.id)
@@ -52,9 +51,14 @@ export default function Home() {
     socket.on("invitation_exists", () => {
       toast.error("Invitation for Chat Already Exists!", { autoClose: 1000 });
     });
+    socket.on("invitation_accepted", (combinedRoomId) => {
+      toast.info("Redirecting You to Chat Window", {
+        autoClose: 1000,
+      });
+      router.push(`/chat?roomId=${combinedRoomId}`);
+    });
     socket.on("invitation_removed", (roomId) => {
       const newInvitations = invitations.filter((inv) => inv.roomId !== roomId);
-      console.log(newInvitations);
       setInvitations(newInvitations);
     });
     socket.on("invitation_rejected", (rejectingUser) => {
@@ -64,9 +68,6 @@ export default function Home() {
     });
   }, []);
 
-  useEffect(() => {
-    console.log(invitations);
-  }, [invitations]);
   if (user === null) return <Unauthorized />;
 
   return (

@@ -3,16 +3,11 @@ import { useSocket } from "../context/SocketContext";
 import { useUser } from "../context/UserContext";
 
 export default function InvitationList({ invitations }) {
-  console.log(invitations);
   const router = useRouter();
   const socket = useSocket();
   const [user, setUser] = useUser();
-  const handleAccept = (invitation) => {
-    socket.emit("invitation_accepted", {
-      user,
-      invitation,
-    });
-    router.push("/chat");
+  const handleAccept = (combinedRoomId) => {
+    socket.emit("invitation_accepted", combinedRoomId);
   };
   const handleReject = (combinedRoom, otherUser) => {
     socket.emit(
@@ -32,7 +27,9 @@ export default function InvitationList({ invitations }) {
             <div className="d-flex gap">
               <button
                 className="btn btn-primary"
-                onClick={() => handleAccept(invitation)}
+                onClick={() =>
+                  handleAccept(invitation.roomId, invitation.otherUser)
+                }
               >
                 Accept Invitation
               </button>

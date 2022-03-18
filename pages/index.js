@@ -3,6 +3,7 @@ import { useSocket } from "../context/SocketContext";
 import { useRouter } from "next/router";
 import { useUser } from "../context/UserContext";
 import { toast } from "react-toastify";
+import { CALC_PRIVATE_KEY, CALC_PUBLIC_KEY } from "../utils/helpers";
 function randomIntFromInterval(min, max) {
   // min and max included
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -19,8 +20,8 @@ export default function Index() {
     if (name.length > 0) {
       socket.emit("user_join", { name });
       socket.on("constants", (data) => {
-        const privateKey = randomIntFromInterval(1, data.p);
-        const publicKey = Math.pow(Number(data.g), privateKey) % data.p;
+        const privateKey = CALC_PRIVATE_KEY(data.p);
+        const publicKey = CALC_PUBLIC_KEY(data.p, data.g, privateKey);
         socket.emit("update_user", { id: data.id, name, publicKey });
         socket.on("user_updated", (newUser) => {
           setUser({
@@ -39,9 +40,7 @@ export default function Index() {
       });
     }
   };
-  useEffect(() => {
-    console.log("user change", user);
-  }, [user]);
+
   return (
     <div className="center-screen">
       <div className="card d-grid shadow-sm gap">

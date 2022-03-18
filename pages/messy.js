@@ -56,21 +56,17 @@ export default function Home() {
 
       privateKey = randomIntFromInterval(1, p);
       publicKey = Math.pow(Number(g), privateKey) % p;
-      console.log(data);
       setPRkMe(privateKey);
       setPUkMe(publicKey);
       setId(myid);
       socket.emit("public_key", publicKey);
     });
     socket.on("public_key", (otherPublicKey) => {
-      console.log("New User is Here", otherPublicKey, privateKey);
-
       sharedKey = Math.pow(otherPublicKey, privateKey) % p;
       setSHK(sharedKey);
     });
     socket.on("otherUsersPublicKey", (otherPublicKey) => {
       if (otherPublicKey !== "") {
-        console.log("Old User is Here", otherPublicKey, privateKey);
         sharedKey = Math.pow(otherPublicKey, privateKey) % p;
         setSHK(sharedKey);
       }

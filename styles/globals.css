@@ -149,9 +149,9 @@ ul {
   border-radius: 100vw;
 }
 .toggle-switch {
-  width: 40px;
+  width: 50px;
   display: block;
-  height: 25px;
+  height: 30px;
   border-radius: 100vw;
   position: relative;
   --color: #9bb1aa;
@@ -160,20 +160,21 @@ ul {
 }
 .toggle-switch::after {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  --dim: 20px;
+  width: calc(var(--dim));
+  height: calc(var(--dim));
   content: "";
   background-color: #ffffff;
   border-radius: 50%;
-  top: 0;
-  transform: translateX(-2px);
+  top: calc(50% - calc(var(--dim) / 2));
+  left: calc(0);
   transition: all 150ms ease-in-out;
 }
 .toggle-switch.toggled {
   --color: #0fa657;
 }
 .toggle-switch.toggled::after {
-  transform: translateX(calc(-100% + 2px));
+  transform: translateX(calc(-100%));
 }
 /* Colors */
 .yellow {
@@ -319,6 +320,7 @@ ul {
 .message-list {
   overflow-y: auto;
   overflow-x: hidden;
+  flex-direction: column-reverse;
 }
 
 .message-item {
@@ -326,6 +328,7 @@ ul {
   padding: 1rem;
   border-radius: 5px;
   background-color: #ffe6bd;
+  word-break: break-all;
 }
 
 .msg-self > li {
