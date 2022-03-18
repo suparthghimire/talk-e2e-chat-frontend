@@ -6,7 +6,7 @@ This application isn't meant to be a production grade chat application that woul
 
 You can Read More about how the system works from the blog I wrote here: Comming Soon
 
-This is Frontend Part of Project. You need Server Code for the project to work[Goto Backend Repository](#)
+This is Frontend Part of Project. You need Server Code for the project to work[Goto Backend Repository](https://github.com/suparthghimire/talk-e2e-chat-backend)
 
 ## Technology Stack
 
@@ -53,7 +53,7 @@ Ofcourse Not! There probably are much better ways to do so, but this is how I di
 
 ### Is there a backend for the project?
 
-Yes. The project is a Full Stack Application. [Goto Server Repository](#)
+Yes. The project is a Full Stack Application. [Goto Server Repository](https://github.com/suparthghimire/talk-e2e-chat-backend)
 
 ## Demo GIF
 
