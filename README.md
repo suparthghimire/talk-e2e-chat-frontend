@@ -57,8 +57,7 @@ Yes. The project is a Full Stack Application. [Goto Server Repository](#)
 
 ## Demo GIF
 
-(There are not the COlors in the app. The GIF Renderer messes up with the color output. Dont Know Why!)
-![Demo Image](https://i.ibb.co/2Py6vLt/result-gif.gif)
+<img src="./result_gif.gif?raw=true" width="1920px">
 
 ## Note
 
