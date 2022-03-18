@@ -45,7 +45,7 @@ export default function Index() {
     <div className="center-screen">
       <div className="card d-grid shadow-sm gap">
         <h1>Login</h1>
-        <form action="#" onSubmit={handleSubmit}>
+        <form action="#" onSubmit={handleSubmit} autoComplete="off">
           <div className="d-grid grid-column gap login-form-div">
             <label htmlFor="name" className="text-normal">
               Enter Your Name

@@ -1,34 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Talk - E2EE Chat Application Frontend
 
-## Getting Started
+### End to End Encrypted Chat Application
 
-First, run the development server:
+This application isn't meant to be a production grade chat application that would use E2EE system, but is a way to see how would you implement it in MENN stack.
+
+You can Read More about how the system works from the blog I wrote here: Comming Soon
+
+This is Frontend Part of Project. You need Server Code for the project to work[Goto Backend Repository](#)
+
+## Technology Stack
+
+- Language: JavaScript
+- Web Socket: Socket.io
+- Frontend: NextJS
+- Backend Runtime: NodeJs
+
+## How to Run
+
+Clone the Repository
+
+```bash
+git clone talk/frontend
+```
+
+Navigate to Folder
+
+```bash
+cd talk/frontend
+```
+
+Install Dependencies
+
+```bash
+npm install
+```
+
+Run the Server
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## FAQ
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Is this a Production Grade Chat Application?
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+No. This Application was created so that I could better understand how Public Key Cryptography Works
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Is this the only way to create an End to End Encryption Chat Application?
 
-## Learn More
+Ofcourse Not! There probably are much better ways to do so, but this is how I did it. There aren't much information on creating such appliation available online so this is One of many ways to do so.
 
-To learn more about Next.js, take a look at the following resources:
+### Is there a backend for the project?
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Yes. The project is a Full Stack Application. [Goto Server Repository](#)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Demo GIF
 
-## Deploy on Vercel
+(There are not the COlors in the app. The GIF Renderer messes up with the color output. Dont Know Why!)
+![Demo Image](https://i.ibb.co/2Py6vLt/result-gif.gif)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Note
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+You can play with the code as much as you want. The only thing I discourage is cloning the repository and distributing the project as a college assignment of anykind
