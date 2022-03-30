@@ -1,4 +1,4 @@
-import Head from "next/Head";
+import Head from "Next/Head";
 import { ToastContainer } from "react-toastify";
 
 export default function Layout({ children }) {
