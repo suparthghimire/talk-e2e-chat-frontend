@@ -10,7 +10,7 @@ export default function HelpModal() {
     } else {
       localStorage.setItem("first-visit-talk", false);
     }
-    setModalOpen(firstVisit);
+    setModalOpen(true);
   }, []);
   return (
     <>
@@ -33,7 +33,7 @@ export default function HelpModal() {
           </div>
           <div className="mt-2 text-bold">About</div>
           <hr />
-          <p>
+          <p className="mt-1">
             Talk is an End to End Encrypted Chat Application that combines
             Diffie Hellman and AES encryption. The conversation between 2
             communicating parties is encrypted via a shared key that is only
@@ -42,7 +42,7 @@ export default function HelpModal() {
           </p>
           <p className="bold mt-2 text-bold">How to Use?</p>
           <hr />
-          <ul className="list-styled">
+          <ul className="list-styled mt-1">
             <li>Login Using your Username</li>
             <li>Invite anyone from List of active users</li>
             <li>
@@ -59,6 +59,27 @@ export default function HelpModal() {
               over the server
             </li>
           </ul>
+          <p className="mt-2 text-bold">Details</p>
+          <hr />
+          <p className="mt-1">
+            <a
+              className="link"
+              href="https://github.com/suparthghimire/talk-e2e-chat-frontend"
+              target="_blank"
+              rel="noreferrer"
+            >
+              View Code
+            </a>
+            &nbsp; | &nbsp;
+            <a
+              className="link"
+              href="https://suparthnarayanghimire.com.np"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Developer
+            </a>
+          </p>
         </div>
       </div>
     </>
