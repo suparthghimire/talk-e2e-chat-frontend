@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { createContext } from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const UserContext = createContext();
 const UserUpdateContext = createContext();

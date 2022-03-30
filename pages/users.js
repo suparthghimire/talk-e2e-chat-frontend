@@ -19,7 +19,7 @@ export default function Home() {
       setTimeout(() => {
         router.push("/");
       }, 500);
-  }, []);
+  }, [router, user]);
   useEffect(() => {
     if (!socket) return;
     socket.emit("get_all_users");
@@ -66,7 +66,7 @@ export default function Home() {
         autoClose: 1000,
       });
     });
-  }, []);
+  }, [router, socket, user.id, invitations]);
 
   if (user === null) return <Unauthorized />;
 

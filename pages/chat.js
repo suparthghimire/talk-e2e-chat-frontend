@@ -46,7 +46,7 @@ export default function Chat() {
         return data;
       });
     });
-  }, []);
+  }, [roomId, socket, user]);
   useEffect(() => {
     if (user === null)
       setTimeout(() => {
