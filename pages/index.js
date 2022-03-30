@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSocket } from "../context/SocketContext";
 import { useRouter } from "next/router";
 import { useUser } from "../context/UserContext";

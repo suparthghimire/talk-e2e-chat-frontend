@@ -39,7 +39,13 @@ a {
 ul {
   list-style: none;
 }
-
+.mt-2 {
+  margin-top: 1rem;
+}
+.list-styled {
+  list-style-type: disc;
+  margin-left: 1rem;
+}
 .center-screen {
   width: 100vw;
   height: 100vh;
@@ -112,6 +118,10 @@ ul {
 .w-100 {
   width: 100%;
 }
+.w-75 {
+  width: 75%;
+  max-width: 500px;
+}
 .h-fit-content {
   height: fit-content;
 }
@@ -121,6 +131,9 @@ ul {
 }
 .text-normal {
   font-size: 1.25rem;
+}
+.text-bold {
+  font-weight: bold;
 }
 .btn {
   padding: 0.5rem;
@@ -132,6 +145,11 @@ ul {
 .btn-primary {
   color: white;
   background-image: linear-gradient(90deg, #29957b, #0fa657);
+  transition: all 100ms ease-in-out;
+}
+.btn-white {
+  color: #29957b;
+  background-color: white;
   transition: all 100ms ease-in-out;
 }
 .btn:hover,
@@ -334,7 +352,29 @@ ul {
 .msg-self > li {
   background-color: #bdffdd;
 }
-.header {
+.help-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+.help-modal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.53);
+  backdrop-filter: blur(7.9px);
+  display: grid;
+  place-items: center;
+  line-height: 1.3;
+  transform: scale(1, 0);
+  opacity: 0;
+  transition: all 150ms ease-in-out;
+  transform-origin: bottom;
+  z-index: 999999999999999999999;
+}
+.help-modal-display {
+  transform: scale(1, 1);
+  opacity: 1;
 }
 @media screen and (max-width: 600px) {
   .header {
