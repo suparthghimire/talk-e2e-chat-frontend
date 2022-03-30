@@ -66,7 +66,7 @@ export default function Home() {
         autoClose: 1000,
       });
     });
-  }, [router, socket, user.id, invitations]);
+  }, [router, socket, invitations]);
 
   if (user === null) return <Unauthorized />;
 
@@ -76,7 +76,7 @@ export default function Home() {
         <div className="d-flex gap">
           <h2>{user.name}</h2>
           <div className="d-flex gap badge-list">
-            <span className="badge yellow">Id: {user.id}</span>
+            <span className="badge yellow">Id: {user?.id}</span>
             <span className="badge purple">Public Key: {user.public}</span>
             <span className="badge red">Private Key: {user.private}</span>
           </div>
