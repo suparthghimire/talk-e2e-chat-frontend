@@ -26,7 +26,7 @@ export default function Home() {
     socket.on("all_users", (allUsers) => {
       allUsers =
         allUsers.length > 0
-          ? allUsers.filter((usr) => usr.id !== user.id)
+          ? allUsers.filter((usr) => usr.id !== user?.id)
           : allUsers;
       setUsers(allUsers);
     });
