@@ -394,8 +394,10 @@ ul {
   width: 100%;
   color: white;
   padding: 0.5rem;
-  transform: scale(0, 1);
+  transform: scale(1, 0);
   opacity: 0;
+  transform-origin: top;
+  transition: all 150ms ease-in-out;
 }
 .banner-show {
   transform: scale(1, 1);
