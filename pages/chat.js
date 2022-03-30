@@ -5,7 +5,7 @@ import { useUser } from "../context/UserContext";
 import Unauthorized from "../components/Unauthorized";
 import { CALC_SHARED_KEY, ENCRYPT_MSG, DECRYPT_MSG } from "../utils/helpers";
 import { useSocket } from "../context/SocketContext";
-
+import Head from "next/head";
 export default function Chat() {
   const [toggleSwitch, setToggleSwitch] = useState(false);
   const [user, setUser] = useUser();
@@ -76,64 +76,74 @@ export default function Chat() {
   }
 
   return (
-    <div className="p-2 d-grid chat text-normal">
-      <div className="card w-fit-content">Go Back</div>
-      <div className="card chat-wrapper d-grid h-max gap">
-        <header className="header card d-flex flex-justify-between flex-align-center gap">
-          <div className="d-flex flex-align-center gap flex-column-sm">
-            <h2>
-              {otherUser && otherUser?.name.length > 10
-                ? otherUser && otherUser?.name.slice(0, 10) + "..."
-                : otherUser && otherUser?.name}
-            </h2>
-            <div className="d-flex align-center gap">
-              <small className="badge purple">
-                {otherUser && otherUser.public}
-              </small>
-              <small className="badge red">
-                {sharedKey ? sharedKey : "Shared Key"}
-              </small>
+    <>
+      <Head>
+        <title>Talk - Chat</title>
+        <meta
+          name="description"
+          content="Diffie Hellman Key Exchange Implementation"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className="p-2 d-grid chat text-normal">
+        <div className="card w-fit-content">Go Back</div>
+        <div className="card chat-wrapper d-grid h-max gap">
+          <header className="header card d-flex flex-justify-between flex-align-center gap">
+            <div className="d-flex flex-align-center gap flex-column-sm">
+              <h2>
+                {otherUser && otherUser?.name.length > 10
+                  ? otherUser && otherUser?.name.slice(0, 10) + "..."
+                  : otherUser && otherUser?.name}
+              </h2>
+              <div className="d-flex align-center gap">
+                <small className="badge purple">
+                  {otherUser && otherUser.public}
+                </small>
+                <small className="badge red">
+                  {sharedKey ? sharedKey : "Shared Key"}
+                </small>
+              </div>
             </div>
+            <button
+              className="btn text-normal btn-transparent p-0 d-flex flex-align-center gap"
+              onClick={() => setToggleSwitch(!toggleSwitch)}
+            >
+              Encrypted Message
+              <span
+                className={`toggle-switch ${
+                  toggleSwitch === true ? "toggled" : ""
+                }`}
+              ></span>
+            </button>
+          </header>
+          <div className="messages d-grid h-max w-max">
+            {decMessages.length <= 0 ? (
+              "No Messages To Display"
+            ) : (
+              <MessageList
+                messages={toggleSwitch === true ? encMessages : decMessages}
+                myId={user.id}
+                myName={user.name}
+                otherUserName={otherUser.name}
+              />
+            )}
           </div>
-          <button
-            className="btn text-normal btn-transparent p-0 d-flex flex-align-center gap"
-            onClick={() => setToggleSwitch(!toggleSwitch)}
-          >
-            Encrypted Message
-            <span
-              className={`toggle-switch ${
-                toggleSwitch === true ? "toggled" : ""
-              }`}
-            ></span>
-          </button>
-        </header>
-        <div className="messages d-grid h-max w-max">
-          {decMessages.length <= 0 ? (
-            "No Messages To Display"
-          ) : (
-            <MessageList
-              messages={toggleSwitch === true ? encMessages : decMessages}
-              myId={user.id}
-              myName={user.name}
-              otherUserName={otherUser.name}
-            />
-          )}
+          <form action="#" onSubmit={(e) => handleMessageSend(e)}>
+            <div className="d-grid grid-column chat-form-div">
+              <label htmlFor="message"> Type Your Message</label>
+              <input
+                type="text"
+                id="message"
+                className="form-control margin-right text-normal"
+                placeholder="Aa"
+                value={msgTxt}
+                onChange={(e) => setMsgText(e.target.value)}
+              />
+              <button className="btn btn-primary">Send</button>
+            </div>
+          </form>
         </div>
-        <form action="#" onSubmit={(e) => handleMessageSend(e)}>
-          <div className="d-grid grid-column chat-form-div">
-            <label htmlFor="message"> Type Your Message</label>
-            <input
-              type="text"
-              id="message"
-              className="form-control margin-right text-normal"
-              placeholder="Aa"
-              value={msgTxt}
-              onChange={(e) => setMsgText(e.target.value)}
-            />
-            <button className="btn btn-primary">Send</button>
-          </div>
-        </form>
       </div>
-    </div>
+    </>
   );
 }

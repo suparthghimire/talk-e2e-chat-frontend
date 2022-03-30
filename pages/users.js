@@ -6,6 +6,7 @@ import UserList from "../components/UserList";
 import Unauthorized from "../components/Unauthorized";
 import { toast } from "react-toastify";
 import InvitationList from "../components/InvitationList";
+import Head from "next/head";
 export default function Home() {
   const [users, setUsers] = useState([]);
   const [invitations, setInvitations] = useState([]);
@@ -71,60 +72,74 @@ export default function Home() {
   if (user === null) return <Unauthorized />;
 
   return (
-    <div className="p-2 d-grid gap">
-      <header className="card d-flex flex-center-between rooms-header">
-        <div className="d-flex gap">
-          <h2>{user.name}</h2>
-          <div className="d-flex gap badge-list">
-            <span className="badge yellow">Id: {user?.id}</span>
-            <span className="badge purple">Public Key: {user.public}</span>
-            <span className="badge red">Private Key: {user.private}</span>
+    <>
+      <Head>
+        <title>Talk - Users</title>
+        <meta
+          name="description"
+          content="Diffie Hellman Key Exchange Implementation"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className="p-2 d-grid gap">
+        <header className="card d-flex flex-center-between rooms-header">
+          <div className="d-flex gap">
+            <h2>{user.name}</h2>
+            <div className="d-flex gap badge-list">
+              <span className="badge yellow">Id: {user?.id}</span>
+              <span className="badge purple">Public Key: {user.public}</span>
+              <span className="badge red">Private Key: {user.private}</span>
+            </div>
           </div>
-        </div>
-        <div
-          className="invitations"
-          onFocus={() => {
-            setInvitationListShow(!invitationListShow);
-            setNewInvitationIconShow(false);
-          }}
-          onBlur={() => {
-            setInvitationListShow(false);
-          }}
-        >
           <div
-            className={`invitation-btn ${
-              newInvitationIconShow === true && "new-invitation"
-            }`}
+            className="invitations"
+            onFocus={() => {
+              setInvitationListShow(!invitationListShow);
+              setNewInvitationIconShow(false);
+            }}
+            onBlur={() => {
+              setInvitationListShow(false);
+            }}
           >
-            <button className="btn btn-primary text-normal">Invitations</button>
+            <div
+              className={`invitation-btn ${
+                newInvitationIconShow === true && "new-invitation"
+              }`}
+            >
+              <button className="btn btn-primary text-normal">
+                Invitations
+              </button>
+            </div>
+            <ul
+              className={`invitation-list card ${
+                invitationListShow === true && "show"
+              }`}
+            >
+              {invitations.length <= 0 ? (
+                <p className="text-center text-normal">
+                  Noone Is Willing to Talk To You 😟.
+                  <br />
+                  But You Can Invite Others! 😄
+                </p>
+              ) : (
+                <InvitationList invitations={invitations} />
+              )}
+            </ul>
           </div>
-          <ul
-            className={`invitation-list card ${
-              invitationListShow === true && "show"
-            }`}
-          >
-            {invitations.length <= 0 ? (
-              <p className="text-center text-normal">
-                Noone Is Willing to Talk To You 😟.
-                <br />
-                But You Can Invite Others! 😄
-              </p>
-            ) : (
-              <InvitationList invitations={invitations} />
-            )}
-          </ul>
+        </header>
+        <div className="card w-fit-content">
+          <h3>Online People</h3>
         </div>
-      </header>
-      <div className="card w-fit-content">
-        <h3>Online People</h3>
+        {users.length <= 0 ? (
+          <p className="text-normal card">
+            Opps! Looks Like Noone is Online 😬
+          </p>
+        ) : (
+          <ul className="d-flex flex-wrap gap">
+            <UserList users={users} />
+          </ul>
+        )}
       </div>
-      {users.length <= 0 ? (
-        <p className="text-normal card">Opps! Looks Like Noone is Online 😬</p>
-      ) : (
-        <ul className="d-flex flex-wrap gap">
-          <UserList users={users} />
-        </ul>
-      )}
-    </div>
+    </>
   );
 }
