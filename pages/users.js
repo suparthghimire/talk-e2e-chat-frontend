@@ -6,7 +6,6 @@ import UserList from "../components/UserList";
 import Unauthorized from "../components/Unauthorized";
 import { toast } from "react-toastify";
 import InvitationList from "../components/InvitationList";
-import Head from "next/head";
 export default function Home() {
   const [users, setUsers] = useState([]);
   const [invitations, setInvitations] = useState([]);

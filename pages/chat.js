@@ -5,7 +5,6 @@ import { useUser } from "../context/UserContext";
 import Unauthorized from "../components/Unauthorized";
 import { CALC_SHARED_KEY, ENCRYPT_MSG, DECRYPT_MSG } from "../utils/helpers";
 import { useSocket } from "../context/SocketContext";
-import Head from "next/head";
 export default function Chat() {
   const [toggleSwitch, setToggleSwitch] = useState(false);
   const [user, setUser] = useUser();
