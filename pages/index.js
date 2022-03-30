@@ -4,10 +4,6 @@ import { useRouter } from "next/router";
 import { useUser } from "../context/UserContext";
 import { toast } from "react-toastify";
 import { CALC_PRIVATE_KEY, CALC_PUBLIC_KEY } from "../utils/helpers";
-function randomIntFromInterval(min, max) {
-  // min and max included
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
 
 export default function Index() {
   const [name, setName] = useState("");

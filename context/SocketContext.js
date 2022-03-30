@@ -11,7 +11,7 @@ export const useSocket = () => {
 export default function SocketProvider({ children }) {
   const [socket, setSocket] = useState();
   useEffect(() => {
-    const socket = io.connect("http://localhost:3000");
+    const socket = io.connect(process.env.SOCKET_CONN);
     setSocket(socket);
   }, []);
   return (

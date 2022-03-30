@@ -16,9 +16,7 @@ export default function UserProvider({ children }) {
   const [user, setUser] = useState(null);
   return (
     <UserContext.Provider value={[user, setUser]}>
-      {/* <UserUpdateContext.Provider value={setUser}> */}
       {children}
-      {/* </UserUpdateContext.Provider> */}
     </UserContext.Provider>
   );
 }
