@@ -74,6 +74,9 @@ ul {
 .text-center {
   text-align: center;
 }
+.text-white {
+  color: white;
+}
 .d-grid {
   display: grid;
 }
@@ -377,9 +380,24 @@ ul {
   opacity: 0;
   transition: all 150ms ease-in-out;
   transform-origin: bottom;
-  z-index: 999999999999999999999;
+  z-index: 99999;
 }
 .help-modal-display {
+  transform: scale(1, 1);
+  opacity: 1;
+}
+.banner {
+  position: fixed;
+  top: 0;
+  background-color: rgba(255, 42, 42, 0.918);
+  text-shadow: 0 0 6px #2a2a2ae1;
+  width: 100%;
+  color: white;
+  padding: 0.5rem;
+  transform: scale(0, 1);
+  opacity: 0;
+}
+.banner-show {
   transform: scale(1, 1);
   opacity: 1;
 }
