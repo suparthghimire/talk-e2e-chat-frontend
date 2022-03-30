@@ -73,14 +73,6 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <title>Talk - Users</title>
-        <meta
-          name="description"
-          content="Diffie Hellman Key Exchange Implementation"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <div className="p-2 d-grid gap">
         <header className="card d-flex flex-center-between rooms-header">
           <div className="d-flex gap">

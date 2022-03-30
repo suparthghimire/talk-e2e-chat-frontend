@@ -39,14 +39,6 @@ export default function Index() {
 
   return (
     <>
-      <Head>
-        <title>Talk - Login</title>
-        <meta
-          name="description"
-          content="Diffie Hellman Key Exchange Implementation"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <div className="center-screen">
         <div className="card d-grid shadow-sm gap">
           <h1>Login</h1>

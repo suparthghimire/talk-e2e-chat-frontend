@@ -77,14 +77,6 @@ export default function Chat() {
 
   return (
     <>
-      <Head>
-        <title>Talk - Chat</title>
-        <meta
-          name="description"
-          content="Diffie Hellman Key Exchange Implementation"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <div className="p-2 d-grid chat text-normal">
         <div className="card w-fit-content">Go Back</div>
         <div className="card chat-wrapper d-grid h-max gap">
