@@ -10,7 +10,7 @@ export default function HelpModal() {
     } else {
       localStorage.setItem("first-visit-talk", false);
     }
-    setModalOpen(true);
+    setModalOpen(firstVisit);
   }, []);
   return (
     <>
